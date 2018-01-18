@@ -5,6 +5,7 @@ require 'espresso_path/geo_path'
 include EspressoPath
 RSpec.describe EspressoPath::GeoPath do
 
+  subject { EspressoPath.new }
 
 
 
