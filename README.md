@@ -2,6 +2,8 @@
 
 Welcome to your EspressoPath! Espresso Path is GeoPath API Ruby Wrapper
 
+## WARNING - EXTREME ALPHA
+
 
 ## Installation
 
