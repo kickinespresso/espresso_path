@@ -20,6 +20,10 @@ And then execute:
 Or install it yourself as:
 
     $ gem install espresso_path
+    
+## Documentation
+
+[EspressoPath Docs](http://www.rubydoc.info/gems/espresso_path)    
 
 ## Testing
 
