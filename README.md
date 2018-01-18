@@ -10,7 +10,7 @@ Welcome to your EspressoPath! Espresso Path is GeoPath API Ruby Wrapper
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'espresso_path'
+gem 'espresso_path', '~> 0.1.0'
 ```
 
 And then execute:
@@ -26,8 +26,9 @@ Or install it yourself as:
 1) Create `.env` in the root directory
 2) Add the following environment variables
 
-    ESPRESSO_PATH_USER_NAME=YourEmail
-    ESPRESSO_PATH_PASSWORD=YourPassword
+
+     ESPRESSO_PATH_USER_NAME=YourEmail
+     ESPRESSO_PATH_PASSWORD=YourPassword
 
 ## Usage
 
@@ -50,3 +51,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 
 
+## RubyGems
+
+[EspressoPath on RubyGems](https://rubygems.org/gems/espresso_path)
