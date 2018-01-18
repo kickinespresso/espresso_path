@@ -2,6 +2,7 @@ require "espresso_path/version"
 require 'espresso_path/configuration'
 require 'httparty'
 require 'json'
+require 'espresso_path/geo_path'
 
 module EspressoPath
   class << self

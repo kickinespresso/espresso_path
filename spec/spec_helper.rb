@@ -6,6 +6,7 @@ Dotenv.load
 
 RSpec.configure do |config|
 
+
   config.before(:all) do
     EspressoPath.configure do |config|
       config.user_name = ENV['ESPRESSO_PATH_USER_NAME']

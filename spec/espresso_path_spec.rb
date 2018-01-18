@@ -15,4 +15,10 @@ RSpec.describe EspressoPath do
     EspressoPath.login
 
   end
+
+  # it "login and set token geo_path" do
+  #   geo_path = EspressoPath::GeoPath.new
+  #   geo_path.login
+  #
+  # end
 end
