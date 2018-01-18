@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{GeoPath Ruby API Wrapper}
   spec.description   = %q{Use the GeoPath API via this Ruby Gem}
-  spec.homepage      = "Kickinespresso.com"
+  spec.homepage      = "https://github.com/kickinespresso/espresso_path"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -29,7 +29,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-
+  spec.add_dependency 'httparty'
+  spec.add_development_dependency 'dotenv', '~> 2.2.1'
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"

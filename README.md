@@ -1,8 +1,7 @@
 # EspressoPath
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/espresso_path`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your EspressoPath! Espresso Path is GeoPath API Ruby Wrapper
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -20,6 +19,14 @@ Or install it yourself as:
 
     $ gem install espresso_path
 
+## Testing
+
+1) Create `.env` in the root directory
+2) Add the following environment variables
+
+    ESPRESSO_PATH_USER_NAME=YourEmail
+    ESPRESSO_PATH_PASSWORD=YourPassword
+
 ## Usage
 
 TODO: Write usage instructions here
@@ -32,10 +39,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Chris Desch/espresso_path. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kickinespresso/espresso_path. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+
 

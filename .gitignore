@@ -11,5 +11,6 @@
 # rspec failure tracking
 .rspec_status
 .idea
-.idea/inspectionProfiles/
-.idea/vcs.xml
+.idea/*
+/.env
+
