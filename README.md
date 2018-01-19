@@ -78,3 +78,4 @@ Please refer to the [Code of Conduct](CODE_OF_CONDUCT.md) for details
 ## RubyGems
 
 [EspressoPath on RubyGems](https://rubygems.org/gems/espresso_path)
+
