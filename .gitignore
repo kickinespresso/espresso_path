@@ -13,4 +13,6 @@
 .idea
 .idea/*
 /.env
+*.gem
 
+coveragere
