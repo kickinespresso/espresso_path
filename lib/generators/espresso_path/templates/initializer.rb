@@ -12,6 +12,3 @@ EspressoPath.configure do |config|
   config.client_token = ENV['ESPRESSO_PATH_CLIENT_TOKEN']
 
 end
-
-#Login?
-EspressoPath::GeoPath.login

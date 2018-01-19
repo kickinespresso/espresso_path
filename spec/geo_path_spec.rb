@@ -5,18 +5,6 @@ require 'espresso_path/geo_path'
 include EspressoPath
 RSpec.describe EspressoPath::GeoPath do
 
-  subject { EspressoPath.new }
-
-
-
-  it "login and set token" do
-    #EspressoPath::GeoPath.login
-    #GeoPath.login
-    #geo_path = EspressoPath::GeoPath.new
-    geo_path2 = GeoPath.new
-  end
-
-
   it "login and get audiences" do
 
     geo_path = GeoPath.new

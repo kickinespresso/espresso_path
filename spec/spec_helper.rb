@@ -1,9 +1,10 @@
 require "bundler/setup"
 require "espresso_path"
 require 'dotenv'
+require 'simplecov'
 
 Dotenv.load
-
+SimpleCov.start
 RSpec.configure do |config|
 
 
