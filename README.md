@@ -79,3 +79,6 @@ Please refer to the [Code of Conduct](CODE_OF_CONDUCT.md) for details
 
 [EspressoPath on RubyGems](https://rubygems.org/gems/espresso_path)
 
+## Release Process
+
+[RELEASING.md](RELEASING.md)
