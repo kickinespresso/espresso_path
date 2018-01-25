@@ -3,6 +3,8 @@ require 'httparty'
 require 'json'
 
 module EspressoPath
+  ##
+  # This class is the base client for the API
   class Client
     include HTTParty
 
@@ -24,16 +26,23 @@ module EspressoPath
       @options = {
         headers: {
           Authorization: "Bearer #{@access_token}"
-        }
+        },
+
       }
+    end
+
+    def map_services(type, level, ids, options = @options)
+      options[:query] = { ids: ids}
+      puts options.inspect
+      self.class.get("/mapservices/#{type}/#{level}", @options)
     end
 
     def audience
       self.class.get('/audience', @options)
     end
 
-    def day_parts
-      self.class.get('/day-parts', @options)
+    def census_tracts
+      self.class.get('/census-tracts', @options)
     end
 
     def counties
@@ -44,32 +53,74 @@ module EspressoPath
       self.class.get('/custom-demos', @options)
     end
 
-    def media_types
-      self.class.get('/media-types', @options)
+    def custom_markets
+      self.class.get('/custom-markets', @options)
     end
 
-    def operators
-      self.class.get('/operators', @options)
+    def day_parts
+      self.class.get('/day-parts', @options)
     end
 
-    def plants
-      self.class.get('/plants', @options)
+    def day_part(id)
+      self.class.get("/day-parts/#{id}", @options)
     end
 
-    def markets
-      self.class.get('/markets', @options)
+    def demos
+      self.class.get('/demos/categories', @options)
+    end
+
+    def demo_subcategories(id)
+      self.class.get("/demos/demo_subcategories/#{id}/demo", @options)
     end
 
     def market(market)
       self.class.get("/markets/#{market}", @options)
     end
 
+    def markets
+      self.class.get('/markets', @options)
+    end
+
+    # Get all the MediaTypes
+    def media_types
+      self.class.get('/media-types', @options)
+    end
+
+    # Get the MediaType referenced by the ID
+    # # ==== Attributes
+    #
+    # * +id+ - The id of the object you wish to retrieve.
+    def media_type(id)
+      self.class.get("/media-types/#{id}", @options)
+    end
+
+    def operators
+      self.class.get('/operators', @options)
+    end
+
+    def panel_sets
+      self.class.get('/panel-sets', @options)
+    end
+
+    # Get all the panels
     def panels
       self.class.get('/panels', @options)
     end
 
-    def demo_categories
-      self.class.get('/demos/categories', @options)
+    def panel(id)
+      self.class.get("/panels/#{id}", @options)
+    end
+
+    def panels_nearby
+      self.class.get('/panels/nearby', @options)
+    end
+
+    def plants
+      self.class.get('/plants', @options)
+    end
+
+    def plant(id)
+      self.class.get("/plants/#{id}", @options)
     end
 
     def states
