@@ -23,7 +23,7 @@ Or install it yourself as:
     
 ## Documentation
 
-[EspressoPath Docs](http://www.rubydoc.info/gems/espresso_path)    
+[EspressoPath Docs](http://www.rubydoc.info/github/kickinespresso/espresso_path/master)    
 
 ## Testing
 
