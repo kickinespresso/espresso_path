@@ -10,7 +10,7 @@ Welcome to your EspressoPath! Espresso Path is GeoPath API Ruby Wrapper
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'espresso_path', '~> 0.1.1'
+gem 'espresso_path', '~> 0.1.4'
 ```
 
 And then execute:
