@@ -7,6 +7,15 @@ RSpec.describe EspressoPath::Client do
 
   let(:client) { Client.new }
 
+
+  it "gets map services" do
+    response = client.map_services("DMA", 2, ['123', '435'])
+    #puts response
+    expect(response).to be_success
+
+
+  end
+
   it "gets day_parts" do
     client.day_parts
   end

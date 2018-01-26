@@ -26,13 +26,12 @@ module EspressoPath
       @options = {
         headers: {
           Authorization: "Bearer #{@access_token}"
-        },
-
+        }
       }
     end
 
     def map_services(type, level, ids, options = @options)
-      options[:query] = { ids: ids}
+      options[:query] = { ids: ids }
       puts options.inspect
       self.class.get("/mapservices/#{type}/#{level}", @options)
     end
@@ -52,6 +51,41 @@ module EspressoPath
     def custom_demos
       self.class.get('/custom-demos', @options)
     end
+
+    def custom_demo(id)
+      self.class.get("/custom-demos/#{id}", @options)
+    end
+
+    # Create a Custom Demographic
+    # # ==== Attributes
+    #
+    # * +name+ - The name of demographic
+    # * +age_min+ - Optional - The minimum age in the custom demo
+    # * +age_max+ - Optional - The maximum age in the custom demo
+    # * +hhinc_min+ - Optional - The minimum household income in the custom demo
+    # * +hhinc_max+ - Optional - The maximum household income in the custom demo
+    # * +races+ - Optional - The races included in the custom demo. Supported values are white, black, amerindian, asian, pacific, other
+    # * +sex+ - Optional - The sex in the custom demo
+    # * +employed+ - Optional - The employment status in the custom demo
+    # * +audience+ - Required - Who can use this custom demo
+    def create_custom_demos(name, age_min = 0, age_max = 0,
+                            hhinc_min = 0, hhinc_max = 0, races = [],
+                            sex = nil, employed = nil, audience = 'company')
+      #TODO: Which arguments are optional? Make into param list?
+      options[:query] = { name: name, age_min: age_min, age_max: age_max,
+                          hhinc_min: hhinc_min, hhinc_max: hhinc_max, races: races,
+                          sex: sex, employed: employed, audience: audience }
+      self.class.post('/custom-demos', options)
+    end
+
+    def create_custom_demos2(name, audience = 'company', opts = {})
+      #TODO: Which arguments are optional? Make into param list?
+      options[:query] = { name: name, age_min: age_min, age_max: age_max,
+                          hhinc_min: hhinc_min, hhinc_max: hhinc_max, races: races,
+                          sex: sex, employed: employed, audience: audience }
+      self.class.post('/custom-demos', options)
+    end
+
 
     def custom_markets
       self.class.get('/custom-markets', @options)
@@ -126,5 +160,7 @@ module EspressoPath
     def states
       self.class.get('/states', @options)
     end
+
+
   end
 end
