@@ -50,7 +50,7 @@ module EspressoPath
                           population_base: population_base }.merge(opts)
       self.class.get('/audience', options)
     end
-    
+
     # Get Home Audience
     #
     # # ==== Attributes
