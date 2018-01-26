@@ -26,23 +26,60 @@ module EspressoPath
       @options = {
         headers: {
           Authorization: "Bearer #{@access_token}"
-        },
-
+        }
       }
     end
 
     def map_services(type, level, ids, options = @options)
-      options[:query] = { ids: ids}
-      puts options.inspect
+      options[:query] = { ids: ids }
       self.class.get("/mapservices/#{type}/#{level}", @options)
     end
 
-    def audience
-      self.class.get('/audience', @options)
+    # Get Audience
+    #
+    # # ==== Attributes
+    # * +daypart_ids+ - REQUIRED - Comma-separated list of daypart IDs.
+    # * +demo_ids+ - Optional - Comma-separated list of demo IDs. Either this or custom_demo_ids must be provided.
+    # * +custom_demo_ids+ - Optional - Comma-separated list of custom demo IDs. Either this or demo_ids must be provided.
+    # * +panel_ids+ - REQUIRED - Comma-separated list of panel IDs.
+    # * +market_id+ - REQUIRED - Market ID to get information for.
+    # * +population_base+ - REQUIRED - Base population.
+    def audience(daypart_ids, panel_ids, market_id, population_base, opts ={})
+      options = @options
+      options[:query] = { daypart_ids: daypart_ids, panel_ids: panel_ids, market_id: market_id,
+                          population_base: population_base }.merge(opts)
+      self.class.get('/audience', options)
     end
 
+    # Get Home Audience
+    #
+    # # ==== Attributes
+    # * +daypart_id+ - REQUIRED - Daypart ID to look for.
+    # * +demo_id+ - Optional - Comma-separated list of demo IDs. Either this or custom_demo_ids must be provided.
+    # * +custom_demo_id+ - Optional - Comma-separated list of custom demo IDs. Either this or demo_ids must be provided.
+    # * +panel_ids+ - REQUIRED - Comma-separated list of panel IDs.
+    # * +market_id+ - REQUIRED - Market ID to get information for.
+    # * +population_base+ - REQUIRED - Base population.
+    # * +reporting_level+ - REQUIRED - Geo level to get homes for.
+    def audience_home(daypart_id, panel_ids, market_id, population_base, reporting_level, opts ={})
+      options = @options
+      options[:query] = { daypart_id: daypart_id, panel_ids: panel_ids,
+                          market_id: market_id, reporting_level: reporting_level,
+                          population_base: population_base }.merge(opts)
+      self.class.get('/audience/homes', options)
+    end
+
+    # Gets all Census Tracts
     def census_tracts
       self.class.get('/census-tracts', @options)
+    end
+
+    # Gets specified Census Tract
+    # # ==== Attributes
+    #
+    # * +id+ - Required - Census TractID
+    def census_tract(id)
+      self.class.get("/census-tracts/#{id}", @options)
     end
 
     def counties
@@ -51,6 +88,55 @@ module EspressoPath
 
     def custom_demos
       self.class.get('/custom-demos', @options)
+    end
+
+    def custom_demo(id)
+      self.class.get("/custom-demos/#{id}", @options)
+    end
+
+    # Create a Custom Demographic
+    # # ==== Attributes
+    #
+    # * +name+ - Required - The name of demographic
+    # * +age_min+ - Optional - The minimum age in the custom demo
+    # * +age_max+ - Optional - The maximum age in the custom demo
+    # * +hhinc_min+ - Optional - The minimum household income in the custom demo
+    # * +hhinc_max+ - Optional - The maximum household income in the custom demo
+    # * +races+ - Optional - The races included in the custom demo. Supported values are white, black, amerindian, asian, pacific, other
+    # * +sex+ - Optional - The sex in the custom demo
+    # * +employed+ - Optional - The employment status in the custom demo
+    # * +audience+ - Required - Who can use this custom demo
+    def create_custom_demo(name, audience = 'company', opts = {})
+      options = @options
+      options[:query] = { name: name, audience: audience }.merge(opts)
+      self.class.post('/custom-demos', options)
+    end
+
+    # Update a Custom Demographic
+    # # ==== Attributes
+    #
+    # * +id+ - Required - Custom Demographic ID
+    # * +name+ - Optional - The name of demographic
+    # * +age_min+ - Optional - The minimum age in the custom demo
+    # * +age_max+ - Optional - The maximum age in the custom demo
+    # * +hhinc_min+ - Optional - The minimum household income in the custom demo
+    # * +hhinc_max+ - Optional - The maximum household income in the custom demo
+    # * +races+ - Optional - The races included in the custom demo. Supported values are white, black, amerindian, asian, pacific, other
+    # * +sex+ - Optional - The sex in the custom demo
+    # * +employed+ - Optional - The employment status in the custom demo
+    # * +audience+ - Optional - Who can use this custom demo
+    def update_custom_demo(id, opts = {})
+      options = @options
+      options[:query] = opts
+      self.class.put("/custom-demos/#{id}", options)
+    end
+
+    # Delete a Custom Demographic
+    # # ==== Attributes
+    #
+    # * +id+ - Required - Custom Demographic ID
+    def delete_custom_demo(id)
+      self.class.delete("/custom-demos/#{id}", @options)
     end
 
     def custom_markets
@@ -126,5 +212,7 @@ module EspressoPath
     def states
       self.class.get('/states', @options)
     end
+
+
   end
 end
