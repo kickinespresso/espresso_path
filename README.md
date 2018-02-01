@@ -23,7 +23,7 @@ Or install it yourself as:
     
 ## Documentation
 
-[EspressoPath Docs](http://www.rubydoc.info/gems/espresso_path)    
+[EspressoPath Docs](http://www.rubydoc.info/github/kickinespresso/espresso_path/master)    
 
 ## Testing
 
@@ -31,10 +31,12 @@ Or install it yourself as:
 2) Add the following environment variables
 
 
-     ESPRESSO_PATH_USER_NAME=YourEmail
-     ESPRESSO_PATH_PASSWORD=YourPassword
+    ESPRESSO_PATH_USER_NAME=YourEmail
+    ESPRESSO_PATH_PASSWORD=YourPassword
+
 
 3) Run tests with
+
 
     rspec
 
