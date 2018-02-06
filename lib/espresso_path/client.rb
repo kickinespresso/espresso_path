@@ -155,8 +155,12 @@ module EspressoPath
       self.class.get('/demos/categories', @options)
     end
 
+    # Get the Demo Subcategories referenced by the ID
+    # # ==== Attributes
+    #
+    # * +id+ - The id of the object you wish to retrieve.
     def demo_subcategories(id)
-      self.class.get("/demos/demo_subcategories/#{id}/demo", @options)
+      self.class.get("/demos/subcategories/#{id}/demos", @options)
     end
 
     def market(market)
@@ -189,7 +193,24 @@ module EspressoPath
     end
 
     # Get all the panels
-    def panels
+    #
+    # # ==== Attributes
+    #
+    # Required - One of markets, counties, states
+    # * +markets+ - Optional - Market uuid
+    # * +counties+ - Optional - Counties FIPS
+    # * +states+ - Optional - State FIPS
+    # * +order_by+ - Optional - Columns to order output by (?order_by=operator+asc,geopath_panel_id+desc)
+    # * +page+ - Required - page number
+    # * +page_len+ - Optional - Number of items per page. Only used if param page is present (Required even though the docs say it is optional)
+    # * +filters+ - Optional - List of filter names
+    # * +operator_name+ - Optional - (If listed in filters) List of operator names to filter by
+    # * +plant_unit_id+ - Optional - (If listed in filters) List of plant unit ids to filter by
+    # * +structure_id+ - Optional - (If listed in filters) List of structure ids to filter by
+    # * +media_type_name+ - Optional -(If listed in filters) List of media_type_names ids to filter by
+    def panels(params = {}, opts = { full: true, page: 1, page_length: 100})
+      options = @options
+      options[:query] = params.merge(opts)
       self.class.get('/panels', @options)
     end
 
